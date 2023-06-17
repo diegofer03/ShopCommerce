@@ -5,16 +5,19 @@ import MyOrder from '../MyOrder'
 import MyOrders from '../MyOrders'
 import NotFound from '../NotFound'
 import SignIn from '../SignIn'
-import './App.css'
 import Navbar from '../../components/Navbar'
 import Layout from '../../components/Layout'
 import { AppContextProvider } from '../../context/appContext'
+import CheckoutMenu from '../../components/CheckoutMenu'
 
 const AppRoutes = () => {
   let routes = useRoutes([
     { path: '/', element: <Home /> },
+    { path: '/:category', element: <Home /> },
     { path: '/myAccount', element: <MyAccount /> },
     { path: '/myOrder', element: <MyOrder /> },
+    { path: '/myOrder/last', element: <MyOrder /> },
+    { path: '/myOrders/:id', element: <MyOrder /> },
     { path: '/myOrders', element: <MyOrders /> },
     { path: '/signIn', element: <SignIn /> },
     { path: '/*', element: <NotFound /> },
@@ -30,6 +33,7 @@ function App() {
         <Navbar />
         <Layout>
           <AppRoutes/>
+          <CheckoutMenu />
         </Layout>
       </BrowserRouter>
     </AppContextProvider>

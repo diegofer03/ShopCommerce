@@ -1,4 +1,4 @@
-import { api } from "../../../script/api";
+import { api } from "../../script/api";
 
 const endPoints = {
     products: {
@@ -20,7 +20,7 @@ const endPoints = {
     categories: {
       getCategories: `${api}/categories`,
       postCategories: `${api}/categories`,
-      getCategoriesProduct: (id) => `${api}/categories/${id}/products`,
+      getCategoriesProduct: (limit, offset, id) => `${api}/categories/${id}/products?limit=${limit}&offset=${offset}`,
       putCategories: (id) => `${api}/categories/${id}`
     },
     files: {

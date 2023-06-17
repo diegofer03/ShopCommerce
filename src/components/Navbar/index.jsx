@@ -29,8 +29,8 @@ function Navbar() {
             className: ''
         },
         {
-            to: '/toys',
-            text: 'toys',
+            to: '/shoes',
+            text: 'shoes',
             className: ''
         },
         {
@@ -41,11 +41,6 @@ function Navbar() {
     ]
     
     let menu2 = [
-        {
-            to: '/myAccount',
-            text: 'elmomazo@gmail.com',
-            className: 'text-black/60'
-        },
         {
             to: '/myOrders',
             text: 'My orders',
