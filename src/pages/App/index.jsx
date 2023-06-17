@@ -1,4 +1,4 @@
-import { useRoutes, BrowserRouter } from 'react-router-dom'
+import { useRoutes, BrowserRouter, createHashRouter, RouterProvider, HashRouter } from 'react-router-dom'
 import Home from '../Home'
 import MyAccount from '../MyAccount'
 import MyOrder from '../MyOrder'
@@ -30,14 +30,14 @@ const AppRoutes = () => {
 function App() {
   return (
     <AppContextProvider>
-      <BrowserRouter>
+      <HashRouter>
         <Loader />
         <Navbar />
         <Layout>
           <AppRoutes/>
           <CheckoutMenu />
         </Layout>
-      </BrowserRouter>
+      </HashRouter>
     </AppContextProvider>
   )
 }
