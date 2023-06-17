@@ -7,7 +7,7 @@ import { ShoppingCartIcon } from '@heroicons/react/24/solid'
 // eslint-disable-next-line react/prop-types
 function NavItem({ classname, to, children, activeStyle}) {
   let navigate = useNavigate();
-  const {countItem} = useApp()
+  const {countItem, setCheckoutMenu, checkoutMenu} = useApp()
   function changeLocation(placeToGo){
     navigate(placeToGo, { replace: true });
     window.location.reload();
@@ -15,12 +15,10 @@ function NavItem({ classname, to, children, activeStyle}) {
   return (
     <li className={(classname)}>
         {to == '/myOrder' ? 
-            <NavLink to={to} className={({ isActive }) => (isActive ? activeStyle : undefined)} onClick={() => changeLocation(to)}>
-              <div className='flex items-center'>
-                <ShoppingCartIcon className="h-6 w-6 text-black"/>
-                {countItem}
-              </div>
-            </NavLink>
+            <div className='flex items-center' onClick={() => setCheckoutMenu(!checkoutMenu)}>
+              <ShoppingCartIcon className="h-6 w-6 "/>
+              {countItem}
+            </div>
           : <NavLink to={to} className={({ isActive }) => (isActive ? activeStyle : undefined)} onClick={() => changeLocation(to)}>
               {children}
             </NavLink>

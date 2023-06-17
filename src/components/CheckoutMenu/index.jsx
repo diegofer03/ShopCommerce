@@ -38,10 +38,12 @@ function CheckoutMenu() {
     }
   },[order])
   return (
-    <aside className={`${checkoutMenu ? 'flex' : 'hidden'} flex-col justify-between fixed right-0 border bg-white border-black rounded-lg w-[360px] h-[calc(100vh-68px)] p-6 z-20`}>
+    <aside className={`${checkoutMenu ? 'flex' : 'hidden'} flex-col justify-between fixed right-0 border
+     bg-white border-black rounded-lg w-[360px] h-[calc(100vh-68px)] p-6 z-20
+     dark:bg-black dark:border-white`}>
         <div className='flex justify-between items-center'>
             <h2 className='font-medium text-xl'>Checkout Card</h2>
-            <button onClick={() => {setCheckoutMenu(false)}}><XMarkIcon className="h-6 w-6 text-black"/></button>
+            <button onClick={() => {setCheckoutMenu(false)}}><XMarkIcon className="h-6 w-6"/></button>
         </div>
         <div className='overflow-x-auto my-2 flex-auto'>
             {cardProducts.map((product,index)=>(
@@ -50,13 +52,14 @@ function CheckoutMenu() {
             }
         </div>
         <div>
-            <p className='flex justify-between items-center border-black border-2 px-3 rounded-md'>
+            <p className='flex justify-between items-center border-black border-2 px-3 rounded-md dark:border-white'>
                 <span className='font-light'>Total:</span>
                 <span className='font-medium text-lg'>{total}$</span>
             </p>
         </div>
         <Link to={'/myOrder/last'}>
-          <button disabled={cardProducts.length < 1} className={`${cardProducts.length < 1 ? 'bg-stone-500' : 'bg-black' } text-white rounded-md my-3 py-2 w-full`} onClick={() => handleCheckout()}> Checkout </button>
+          <button disabled={cardProducts.length < 1} className={`${cardProducts.length < 1 ? 'bg-stone-500' : 'bg-black dark:bg-white dark:text-black' } 
+          text-white rounded-md my-3 py-2 w-full `} onClick={() => handleCheckout()}> Checkout </button>
         </Link>
     </aside>
   )

@@ -7,10 +7,11 @@ function ProductDetail() {
   const {detailOpen, setDetailOpen, productShow, setProductShow} = useApp()
 
   return (
-    <aside className={`${detailOpen ? 'flex' : 'hidden'}  flex-col fixed right-0 border bg-white border-black rounded-lg w-[360px] h-[calc(100vh-68px)] px-6 z-20`}>
+    <aside className={`${detailOpen ? 'flex' : 'hidden'}  flex-col fixed right-0 border bg-white 
+    border-black rounded-lg w-[360px] h-[calc(100vh-68px)] px-6 z-20 dark:bg-black dark:border-white`}>
         <div className='flex justify-between items-center py-6'>
             <h2 className='font-medium text-xl'>Product Detail</h2>
-            <button onClick={() => {setDetailOpen(false); setProductShow({})}}><XMarkIcon className="h-6 w-6 text-black"/></button>
+            <button onClick={() => {setDetailOpen(false); setProductShow({})}}><XMarkIcon className="h-6 w-6"/></button>
         </div>
         <figure className=''>
             <Carousel showThumbs={false} showStatus={false}>

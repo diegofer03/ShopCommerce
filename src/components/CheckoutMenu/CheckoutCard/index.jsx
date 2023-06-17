@@ -31,7 +31,7 @@ function CheckoutCard({product , edit}) {
                 <p className='text-sm font-light'>{product.title}</p>
                 <p className='text-sm font-light'>Cantidad:</p>
                 <div className='flex items-center w-5'>
-                    <input disabled={!edit} className='w-8 mr-2 border-black border-2 rounded-md' id={product?.id} type='text' max={'20'} defaultValue={product.quantity}/>
+                    <input disabled={!edit} className='w-8 mr-2 border-black border-2 rounded-md dark:bg-black dark:border-white' id={product?.id} type='text' max={'20'} defaultValue={product.quantity}/>
                     {
                       edit && <button className='text-sm bg-sky-600 rounded-md px-1' onClick={() => changeQuantity()}>Update</button>
                     }
@@ -41,7 +41,7 @@ function CheckoutCard({product , edit}) {
         <div className='flex items-center gap-2'>
             <p className='text-md font-medium'>{product.price * product.quantity}$</p>
             {
-              edit && <TrashIcon className="h-6 w-6 text-black" onClick={() => handleDelete(product.id)}/>
+              edit && <TrashIcon className="h-6 w-6 " onClick={() => handleDelete(product.id)}/>
             }
         </div>
     </div>

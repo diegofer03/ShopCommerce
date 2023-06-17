@@ -14,6 +14,7 @@ function useProviderApp() {
   const [quantityChange, setQuantityChange] = React.useState(false)
   const [order, setOrder] = React.useState([])
   const [verifyState, setVerifyState] = React.useState(false)
+  const [darkMode, setDarkMode] = React.useState(true)
 
   React.useEffect(() => {
     let quantity = 0
@@ -65,7 +66,9 @@ function useProviderApp() {
     saveOrders,
     getData,
     deleteCards,
-    verifyState
+    verifyState,
+    darkMode,
+    setDarkMode
   }
 }
 
