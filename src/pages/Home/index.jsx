@@ -44,7 +44,7 @@ const Home = () => {
   }
   React.useEffect(() =>{ 
     // window.location.reload();
-  }, [])
+  }, [category])
   React.useEffect(() =>{ 
     setItems(response) 
   }, [response, category])

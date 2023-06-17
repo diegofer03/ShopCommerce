@@ -8,6 +8,7 @@ import { UserCircleIcon as UserSolid} from '@heroicons/react/24/outline'
 import { Fragment } from 'react'
 import { Disclosure, Menu, Transition } from '@headlessui/react'
 import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline'
+import { NavLink, useNavigate  } from "react-router-dom"
 
 const navigation = [
   { name: 'All', href: '/', current: false },
@@ -25,6 +26,11 @@ function classNames(...classes) {
 function Navbar() {
   const {darkMode, setDarkMode, countItem, setCheckoutMenu, checkoutMenu} = useApp()
   const category = window.location.pathname
+  // let navigate = useNavigate();
+  function changeLocation(placeToGo){
+    // navigate(placeToGo, { replace: true });
+    // window.location.reload();
+}
   React.useEffect(()=>{
     navigation.find(nav => {
         if(nav.href === category) nav.current = true
@@ -72,6 +78,7 @@ function Navbar() {
                           'rounded-md px-3 py-2 text-sm font-medium'
                         )}
                         aria-current={item.current ? 'page' : undefined}
+                        onClick={() => changeLocation(item.href)}
                       >
                         {item.name}
                       </a>
