@@ -15,6 +15,7 @@ function useProviderApp() {
   const [order, setOrder] = React.useState([])
   const [verifyState, setVerifyState] = React.useState(false)
   const [darkMode, setDarkMode] = React.useState(true)
+  const [loading, setLoading] = React.useState(false)
 
   React.useEffect(() => {
     let quantity = 0
@@ -23,6 +24,10 @@ function useProviderApp() {
     }
     setCountItem(quantity)
   }, [quantityChange, cardProducts])
+
+  React.useEffect(()=>{
+    if(verifyState) localStorage.setItem('dark', JSON.stringify(darkMode))
+  },[darkMode])
 
   const saveCards = () =>{
     localStorage.setItem('card', JSON.stringify(cardProducts))
@@ -39,12 +44,16 @@ function useProviderApp() {
   const getData = () => {
     const auxCard = JSON.parse(localStorage.getItem('card'))
     const auxOrder = JSON.parse(localStorage.getItem('orders'))
+    const auxdark = JSON.parse(localStorage.getItem('dark'))
 
     if(auxCard === null || auxCard ===undefined) setCardProducts([])
     else setCardProducts(auxCard)
 
     if(auxOrder === null || auxOrder ===undefined) setOrder([])
     else setOrder(auxOrder)
+
+    if(auxdark === null || auxdark ===undefined) setDarkMode(false)
+    else setDarkMode(auxdark)
     setVerifyState(true)
   }
   return {
@@ -68,7 +77,9 @@ function useProviderApp() {
     deleteCards,
     verifyState,
     darkMode,
-    setDarkMode
+    setDarkMode,
+    loading, 
+    setLoading
   }
 }
 

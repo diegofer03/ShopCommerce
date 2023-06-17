@@ -62,9 +62,9 @@ const Home = () => {
   return (
     <>
       <h1 className='text-center font-bold text-xl mb-2'>Lastest Products</h1>
-      <input type="text" className='rounded-lg border border-black w-80 p-3 mb-4 focus:outline-none dark:bg-black dark:border-white' placeholder='Search product' onChange={(e) => setSeacth(e.target.value)}/>
+      <input type="text" className='rounded-lg border border-black sm:w-80 w-7/12 p-3 mb-4 focus:outline-none dark:bg-black dark:border-white' placeholder='Search product' onChange={(e) => setSeacth(e.target.value)}/>
       <div className='h-[81%] overflow-x-auto max-w-screen-lg ' ref={listInnerRef} onScroll={onScroll}>
-        <div className='grid gap-4 grid-cols-4 w-full max-w-screen-lg overflow-hidden' >
+        <div className='grid gap-9 sm:grid-cols-3 md:grid-cols-4 grid-cols-1 md:px-2 sm:px-5 w-full px-5 max-w-screen-lg center overflow-hidden' >
           { filterItems?.length > 0 
             ? filterItems?.map(item=> (
               <Card key={item.id} data={item} />

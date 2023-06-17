@@ -9,7 +9,7 @@ function Layout({children}) {
   },[])
 
   return (
-    <div className={`flex flex-col items-center h-[calc(100vh-69px)] ${darkMode && 'dark bg-black text-white'} `}>
+    <div className={`flex flex-col items-center h-[calc(100vh-64px)] ${darkMode && 'dark bg-black text-white'} `}>
         {children}
     </div>
   )

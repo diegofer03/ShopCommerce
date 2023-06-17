@@ -9,6 +9,7 @@ import Navbar from '../../components/Navbar'
 import Layout from '../../components/Layout'
 import { AppContextProvider } from '../../context/appContext'
 import CheckoutMenu from '../../components/CheckoutMenu'
+import Loader from '../../components/Loader'
 
 const AppRoutes = () => {
   let routes = useRoutes([
@@ -30,6 +31,7 @@ function App() {
   return (
     <AppContextProvider>
       <BrowserRouter>
+        <Loader />
         <Navbar />
         <Layout>
           <AppRoutes/>
