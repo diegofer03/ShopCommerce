@@ -10,17 +10,16 @@ export const useFetch = (apiUrl, deps = []) => {
 			.then(res => res.json())
 			.then(data => {
                 setData(data)
-                console.log(loading)
                 setLoading(false)
-                console.log(loading)
-            });
+            }).catch(err => {
+                setLoading(false)
+            })
     }
 
 	useEffect(() => {
         try {
             fetchData()
         } catch (error) {
-            console.log(error)
             setLoading(false)
         }
 		

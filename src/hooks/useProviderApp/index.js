@@ -16,6 +16,8 @@ function useProviderApp() {
   const [verifyState, setVerifyState] = React.useState(false)
   const [darkMode, setDarkMode] = React.useState(true)
   const [loading, setLoading] = React.useState(false)
+  const [login, setLogin] = React.useState(false)
+  const [user, setUser] = React.useState({})
 
   React.useEffect(() => {
     let quantity = 0
@@ -41,10 +43,31 @@ function useProviderApp() {
     localStorage.removeItem('card')
   }
 
+  const saveUser = (user) => {
+    localStorage.setItem('user', JSON.stringify(user))
+    localStorage.setItem('login', JSON.stringify(true))
+  }
+
+  const signOut = () => {
+    setLogin(false)
+    localStorage.setItem('login', JSON.stringify(false))
+  }
+
+  const logIn = () => {
+    localStorage.setItem('login', JSON.stringify(true))
+  }
+
+  const differentUSer = () => {
+    localStorage.removeItem('login')
+    localStorage.removeItem('user')
+  }
+
   const getData = () => {
     const auxCard = JSON.parse(localStorage.getItem('card'))
     const auxOrder = JSON.parse(localStorage.getItem('orders'))
     const auxdark = JSON.parse(localStorage.getItem('dark'))
+    const auxLogin = JSON.parse(localStorage.getItem('login'))
+    const auxUser = JSON.parse(localStorage.getItem('user'))
 
     if(auxCard === null || auxCard ===undefined) setCardProducts([])
     else setCardProducts(auxCard)
@@ -54,6 +77,13 @@ function useProviderApp() {
 
     if(auxdark === null || auxdark ===undefined) setDarkMode(false)
     else setDarkMode(auxdark)
+
+    if(auxLogin === null || auxLogin ===undefined) setLogin(false)
+    else setLogin(auxLogin)
+
+    if(auxUser === null || auxUser ===undefined) setUser({})
+    else setUser(auxUser)
+
     setVerifyState(true)
   }
   return {
@@ -79,7 +109,15 @@ function useProviderApp() {
     darkMode,
     setDarkMode,
     loading, 
-    setLoading
+    setLoading,
+    login, 
+    setLogin,
+    user, 
+    setUser,
+    saveUser,
+    signOut,
+    differentUSer,
+    logIn
   }
 }
 

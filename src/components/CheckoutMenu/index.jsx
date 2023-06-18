@@ -7,7 +7,7 @@ import { Link } from 'react-router-dom';
 
 
 function CheckoutMenu() {
-  const { cardProducts, setCardProducts, checkoutMenu, countItem, setCheckoutMenu, quantityChange, order, setOrder, saveCards, saveOrders, deleteCards, verifyState} = useApp()
+  const { cardProducts, setCardProducts, checkoutMenu, countItem, setCheckoutMenu, quantityChange, order, setOrder, saveCards, saveOrders, deleteCards, verifyState, login} = useApp()
   const [total, setTotal] = React.useState(totalPrice(cardProducts))
   React.useEffect(() => {
     setTotal(totalPrice(cardProducts))
@@ -16,17 +16,21 @@ function CheckoutMenu() {
     }
   }, [cardProducts, quantityChange])
   const handleCheckout = () => {
-    let date = new Date().toJSON()
-    const orderToAdd = {
-      date: date,
-      products: cardProducts,
-      totalProducts: countItem,
-      fullPrice: totalPrice(cardProducts)
+    if(login){
+      let date = new Date().toJSON()
+      const orderToAdd = {
+        date: date,
+        products: cardProducts,
+        totalProducts: countItem,
+        fullPrice: totalPrice(cardProducts)
+      }
+      setOrder([...order, orderToAdd])
+      setCardProducts([])
+      setCheckoutMenu(false)
+      refreshState()
+    }else {
+      window.location.replace('/signIn')
     }
-    setOrder([...order, orderToAdd])
-    setCardProducts([])
-    setCheckoutMenu(false)
-    refreshState()
   }
   const refreshState = ()=>{
     saveOrders()
