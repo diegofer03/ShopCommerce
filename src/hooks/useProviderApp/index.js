@@ -60,6 +60,11 @@ function useProviderApp() {
   const differentUSer = () => {
     localStorage.removeItem('login')
     localStorage.removeItem('user')
+    localStorage.removeItem('orders')
+  }
+
+  const editUser = (user) => {
+    localStorage.setItem('user', JSON.stringify(user))
   }
 
   const getData = () => {
@@ -117,7 +122,8 @@ function useProviderApp() {
     saveUser,
     signOut,
     differentUSer,
-    logIn
+    logIn,
+    editUser
   }
 }
 

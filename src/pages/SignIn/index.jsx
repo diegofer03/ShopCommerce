@@ -5,7 +5,7 @@ function SignIn() {
   const [userDate, setUser] = React.useState('')
   const [email, setEmail] = React.useState('')
   const [pass, setPass] = React.useState('')
-  const {login, setLogin, user, saveUser, differentUSer, logIn} = useApp()
+  const {user, saveUser, differentUSer, logIn} = useApp()
   const handleSignUp = () =>{
     const userData = {
       user: userDate,
@@ -35,7 +35,7 @@ function SignIn() {
             </p>
             <button className={` bg-black dark:bg-white dark:text-black } 
                 text-white rounded-md my-3 py-2 w-4/5 `} onClick={() => {handleLogIn()}}> Log in </button>
-            <button className={` bg-black dark:bg-white dark:text-black } 
+            <button className={` dark:text-white hover:underline } 
             text-white rounded-md my-3 py-2 w-4/5 `} onClick={() => {handleDifferentUser()}} > Different User </button>
           </>
         : <>

@@ -45,7 +45,7 @@ function Card({data}) {
             </button>
             <span className='absolute bg-white/50 bottom-0 left-0 rounded-lg p-0.5 m-2'>{data.category.name}</span>
         </figure>
-        <p className='flex justify-between cursor-pointer dark:bg-black' onClick={() => showProduct(data)}> 
+        <p className='flex justify-between items-center cursor-pointer dark:bg-black' onClick={() => showProduct(data)}> 
             <span className='text-sm font-light'>{data.title}</span>
             <span className='text-lg font-medium'>{data.price}$</span>
         </p>
