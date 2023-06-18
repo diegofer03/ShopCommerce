@@ -5,15 +5,19 @@ function SignIn() {
   const [userDate, setUser] = React.useState('')
   const [email, setEmail] = React.useState('')
   const [pass, setPass] = React.useState('')
+  const [field, setField] = React.useState(false)
   const {user, saveUser, differentUSer, logIn} = useApp()
   const handleSignUp = () =>{
-    const userData = {
-      user: userDate,
-      email: email,
-      password: pass
+    if (document.getElementById('user').value != '' && document.getElementById('email').value != '' && document.getElementById('password').value != ''){
+      const userData = {
+        user: userDate,
+        email: email,
+        password: pass
+      }
+      saveUser(userData)
+      window.location.replace('/');
     }
-    saveUser(userData)
-    window.location.replace('/');
+    else setField (true)
   }
   const handleDifferentUser = () => {
     differentUSer()
@@ -51,7 +55,7 @@ function SignIn() {
               text-white rounded-md my-3 py-2 w-4/5 `} onClick={()=>{handleSignUp()}}> Sing up </button>
           </>
       }
-      
+      {field && <span className="text-red-600 font-semibold">Todos los campos son requeridos</span>}
     </div>
   )
 }
